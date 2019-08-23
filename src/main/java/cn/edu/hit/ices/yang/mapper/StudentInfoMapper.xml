@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hit.ices.yang.mapper.StudentInfoMapper">
+    <select id="selectCourseUserCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from studentinfo where code_module=#{code_module};
+    </select>
+
+    <select id="selectUserInfoById" parameterType="java.lang.Integer" resultType="cn.edu.hit.ices.yang.model.StudentInfo">
+        select * from studentinfo where id_student=#{id_student};
+    </select>
+
+    <select id="selectStudentListByModule" resultType="cn.edu.hit.ices.yang.model.StudentInfo">
+        select * from studentinfo where code_module=#{code_module} limit #{start},#{count};
+    </select>
+
+    <select id="selectStudentListByModuleAndPre" resultType="cn.edu.hit.ices.yang.model.StudentInfo">
+        select * from studentinfo where code_module=#{code_module} and code_presentation=#{code_presentation} limit #{start},#{count};
+    </select>
+
+    <select id="selectGenderCountByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select gender as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} group by gender;
+    </select>
+
+    <select id="selectGenderCountByModuleAndPre" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select gender as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} and code_presentation=#{code_presentation} group by gender;
+    </select>
+
+    <select id="selectRegionCountByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select region as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} group by region;
+    </select>
+
+    <select id="selectRegionCountByModuleAndPre" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select region as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} and code_presentation=#{code_presentation} group by region;
+    </select>
+
+    <select id="selectEducationCountByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select highest_education as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} group by highest_education;
+    </select>
+
+    <select id="selectEducationCountByModuleAndPre" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select highest_education as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} and code_presentation=#{code_presentation} group by highest_education;
+    </select>
+
+    <select id="selectAgeCountByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select age_band as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} group by age_band;
+    </select>
+
+    <select id="selectAgeCountByModuleAndPre" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select age_band as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} and code_presentation=#{code_presentation} group by age_band;
+    </select>
+
+    <select id="selectImdCountByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select imd_band as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} group by imd_band;
+    </select>
+
+    <select id="selectImdCountByModuleAndPre" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select imd_band as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} and code_presentation=#{code_presentation} group by imd_band;
+    </select>
+</mapper>

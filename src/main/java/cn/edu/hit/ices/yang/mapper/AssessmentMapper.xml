@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hit.ices.yang.mapper.AssessmentMapper">
+    <select id="selectAssessmentByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.Assessment">
+        select * from assessments where code_module=#{code_module};
+    </select>
+</mapper>

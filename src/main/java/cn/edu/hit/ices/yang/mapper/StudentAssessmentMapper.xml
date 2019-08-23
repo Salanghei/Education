@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.hit.ices.yang.mapper.StudentAssessmentMapper">
+    <select id="selectScoreDistribution" parameterType="int" resultType="cn.edu.hit.ices.yang.model.ChartData">
+        select score as field, count(*) as data from studentassessment where id_assessment=#{id_assessment} group by score order by score;
+    </select>
+</mapper>
