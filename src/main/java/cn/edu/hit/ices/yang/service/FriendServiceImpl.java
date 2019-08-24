@@ -21,4 +21,14 @@ public class FriendServiceImpl implements FriendService{
             return null;
         }
     }
+
+    @Override
+    public List<Integer> getFIdByUid(int userid){
+        try{
+            return friendMapper.selectFIdByUid(userid);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

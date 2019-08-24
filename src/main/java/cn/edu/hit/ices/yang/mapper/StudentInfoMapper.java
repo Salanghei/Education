@@ -46,4 +46,8 @@ public interface StudentInfoMapper {
 
     List<ChartData> selectImdCountByModuleAndPre(@Param("code_module")String code_module,
                                                  @Param("code_presentation")String code_presentation);
+
+    List<Integer> selectRandomStudentID(int n);
+
+    List<String> selectModuleNameByUserid(int id_student);
 }

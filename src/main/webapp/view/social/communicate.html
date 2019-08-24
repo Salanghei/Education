@@ -446,13 +446,13 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h3 class="panel-title">信任网络</h3>
+                                        <h3 class="panel-title">信任关系网络</h3>
                                     </div>
                     
                     
                                     <!--chart placeholder-->
                                     <div class="pad-all">
-                                        <div id="demo-chart-network" style="height: 320px"></div>
+                                        <div id="chart-network" style="height: 320px"></div>
                                     </div>
                     
                     
@@ -511,7 +511,6 @@
                                                         <p>
                                                             <span class="label label-warning">标签一</span>
                                                             <span class="label label-success">标签二</span>
-                                                            <span class="label label-info">标签三</span>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -522,45 +521,21 @@
                     
                                                 <p class="text-semibold text-uppercase text-main">推荐用户</p>
                                                 <div class="row">
-                                                    <div class="col-xs-4">
+
+                                                    <div class="col-xs-4" ng-repeat="recommendFriend in recommendFriends">
                                                         <a href="#" class="list-group-item bord-no">
                                                             <div class="media-left pos-rel">
-                                                                <img class="img-circle img-xs" src="../../img/profile-photos/2.png" alt="Profile Picture">
+                                                                <img class="img-circle img-xs" src="../../img/profile-photos/{{ recommendFriend.img }}.png" alt="Profile Picture">
                                                                 <i class="badge badge-success badge-stat badge-icon pull-left"></i>
                                                             </div>
                                                             <div class="media-body">
-                                                                <p class="mar-no text-main">Stephen Tran</p>
-                                                                <small>信任值：XXX</small>
-                                                                <p class="pad-top text-sm">最近学习：XXXXXX</p>
+                                                                <p class="mar-no text-main">{{ recommendFriend.id }}</p>
+                                                                <small>信任值：{{ recommendFriend.weight }}</small>
+                                                                <p class="pad-top text-sm">最近学习：{{ recommendFriend.course }}</p>
                                                             </div>
                                                         </a>
                                                     </div>
-                                                    <div class="col-xs-4">
-                                                        <a href="#" class="list-group-item bord-no">
-                                                            <div class="media-left pos-rel">
-                                                                <img class="img-circle img-xs" src="../../img/profile-photos/3.png" alt="Profile Picture">
-                                                                <i class="badge badge-success badge-stat badge-icon pull-left"></i>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <p class="mar-no text-main">Stephen Tran</p>
-                                                                <small>信任值：XXX</small>
-                                                                <p class="pad-top text-sm">最近学习：XXXXXX</p>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                        <a href="#" class="list-group-item bord-no">
-                                                            <div class="media-left pos-rel">
-                                                                <img class="img-circle img-xs" src="../../img/profile-photos/4.png" alt="Profile Picture">
-                                                                <i class="badge badge-success badge-stat badge-icon pull-left"></i>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <p class="mar-no text-main">Stephen Tran</p>
-                                                                <small>信任值：XXX</small>
-                                                                <p class="pad-top text-sm">最近学习：XXXXXX</p>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+
                                                 </div>
                                     </div>
                     
@@ -1026,6 +1001,9 @@
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../../js/nifty.min.js"></script>
 
+    <!-- Echarts -->
+    <script type="text/javascript" src="../../echarts/echarts.min.js"></script>
+
     <!-- BEGIN ANGULARJS PLUGINS -->
     <script src="../../angular/angular.min.js" type="text/javascript"></script>
     <script src="../../angular/angular-cookies.min.js" type="text/javascript"></script>
@@ -1033,6 +1011,7 @@
     <script src="../../view/social/js/app.js" type="text/javascript"></script>
     <script src="../../view/social/js/controller.js" type="text/javascript"></script>
     <script src="../../view/social/js/service.js" type="text/javascript"></script>
+    <script src="../../view/social/js/communicate.js" type="text/javascript"></script>
     <!-- END ANGULARJS PLUGINS -->
 
 

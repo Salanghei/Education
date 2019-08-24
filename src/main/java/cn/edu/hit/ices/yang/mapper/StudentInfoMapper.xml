@@ -56,4 +56,12 @@
     <select id="selectImdCountByModuleAndPre" resultType="cn.edu.hit.ices.yang.model.ChartData">
         select imd_band as fieldStr, count(*) as data from studentInfo where code_module=#{code_module} and code_presentation=#{code_presentation} group by imd_band;
     </select>
+
+    <select id="selectRandomStudentID" parameterType="int" resultType="java.lang.Integer">
+        select id_student from studentInfo order by rand() limit #{n};
+    </select>
+
+    <select id="selectModuleNameByUserid" parameterType="int" resultType="java.lang.String">
+        select code_module from studentinfo where id_student=#{id_student};
+    </select>
 </mapper>

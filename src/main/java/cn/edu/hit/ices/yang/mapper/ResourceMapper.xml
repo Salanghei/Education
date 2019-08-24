@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.hit.ices.yang.mapper.ResourceMapper">
     <select id="selectAllPassResources" resultType="cn.edu.hit.ices.yang.model.Resource">
-        select distinct resourceid, name, type, time, userid, tag, details from resource where state="pass";
+        select distinct resourceid, name, type, size, time, userid, tag, details, state from resource where state="pass";
     </select>
 
     <select id="selectPassResourcesByUser" parameterType="java.lang.Integer" resultType="cn.edu.hit.ices.yang.model.Resource">
-        select distinct resourceid, name, type, size, time, userid, tag, auth, details, state from resource where userid=#{userid} and state="pass";
+        select distinct resourceid, name, type, size, time, userid, tag, details, state from resource where userid=#{userid} and state="pass";
     </select>
     
     <select id="selectToPassResourceByUser" parameterType="java.lang.Integer" resultType="cn.edu.hit.ices.yang.model.Resource">
-        select distinct resourceid, name, type, size, time, userid, tag, auth, details, state from resource where userid=#{userid} and state="toPass";
+        select distinct resourceid, name, type, size, time, userid, tag, details, state from resource where userid=#{userid} and state="toPass";
     </select>
 
     <select id="selectNotPassResourceByUser" parameterType="java.lang.Integer" resultType="cn.edu.hit.ices.yang.model.Resource">
-        select distinct resourceid, name, type, size, time, userid, tag, auth, details, state from resource where userid=#{userid} and state!="toPass" and state!="pass";
+        select distinct resourceid, name, type, size, time, userid, tag, details, state from resource where userid=#{userid} and state!="toPass" and state!="pass";
     </select>
 
     <select id="selectResourceById" parameterType="java.lang.Integer" resultType="cn.edu.hit.ices.yang.model.Resource">

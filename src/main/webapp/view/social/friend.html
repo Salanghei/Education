@@ -368,7 +368,8 @@
                     
                     
                         <div class="row">
-                            <div class="col-sm-6 col-md-4">
+
+                            <div class="col-sm-6 col-md-4" ng-repeat="friendInfo in friendInfoList">
                     
                     
                                 <!-- Contact Widget -->
@@ -380,26 +381,30 @@
                                             <ul class="dropdown-menu dropdown-menu-right" style="">
                                                 <li><a href="#"><i class="icon-lg icon-fw demo-psi-pen-5"></i> Edit</a></li>
                                                 <li><a href="#"><i class="icon-lg icon-fw demo-pli-recycling"></i> Remove</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-mail"></i> Send a Message</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-calendar-4"></i> View Details</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-lock-user"></i> Lock</a></li>
+                                                <!--<li class="divider"></li>-->
+                                                <!--<li><a href="#"><i class="icon-lg icon-fw demo-pli-mail"></i> Send a Message</a></li>-->
+                                                <!--<li><a href="#"><i class="icon-lg icon-fw demo-pli-calendar-4"></i> View Details</a></li>-->
+                                                <!--<li><a href="#"><i class="icon-lg icon-fw demo-pli-lock-user"></i> Lock</a></li>-->
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="pad-all">
-                                        <div class="media pad-ver">
+                                        <div class="media pad-top pad-lft">
                                             <div class="media-left">
-                                                <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="../../img/profile-photos/8.png"></a>
+                                                <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="../../img/profile-photos/{{ friendInfo.img }}.png"></a>
                                             </div>
-                                            <div class="media-body pad-top">
+                                            <div class="media-body pad-ver">
                                                 <a href="#" class="box-inline">
-                                                    <span class="text-lg text-semibold text-main">Lucy Moon</span>
-                                                    <p class="text-sm">Designer</p>
+                                                    <span class="text-lg text-semibold text-main">{{ friendInfo.id_student }}</span>
+                                                    <p class="text-sm">信任值: {{ friendInfo.trust }}</p>
                                                 </a>
                                             </div>
                                         </div>
-                                        <p class="pad-btm bord-bt text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa.</p>
+                                        <div class="pad-btm pad-lft mar-lft">
+                                            <p class="bord-bt text-sm">gender: {{ friendInfo.gender }}</p>
+                                            <p class="bord-bt text-sm">age_band: {{ friendInfo.age_band }}</p>
+                                            <p class="bord-bt text-sm">highest_education: {{ friendInfo.highest_education }}</p>
+                                        </div>
                                         <div class="text-center pad-to">
                                             <div class="btn-group">
                                                 <a href="#" class="btn btn-sm btn-default"><i class="demo-pli-mail icon-lg icon-fw"></i> 沟通</a>
@@ -413,137 +418,8 @@
                     
                     
                             </div>
-                            <div class="col-sm-6 col-md-4">
-                    
-                    
-                                <!-- Contact Widget -->
-                                <!---------------------------------->
-                                <div class="panel pos-rel">
-                                    <div class="widget-control text-right">
-                                        <div class="btn-group dropdown">
-                                            <a href="#" class="dropdown-toggle btn btn-trans" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical icon-lg"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-right" style="">
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-psi-pen-5"></i> Edit</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-recycling"></i> Remove</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-mail"></i> Send a Message</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-calendar-4"></i> View Details</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-lock-user"></i> Lock</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="pad-all">
-                                        <div class="media pad-ver">
-                                            <div class="media-left">
-                                                <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="../../img/profile-photos/10.png"></a>
-                                            </div>
-                                            <div class="media-body pad-top">
-                                                <a href="#" class="box-inline">
-                                                    <span class="text-lg text-semibold text-main">Brenda Fuller</span>
-                                                    <p class="text-sm">Graphics designer</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <p class="pad-btm bord-bt text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa.</p>
-                                        <div class="text-center pad-to">
-                                            <div class="btn-group">
-                                                <a href="#" class="btn btn-sm btn-default"><i class="demo-pli-mail icon-lg icon-fw"></i> 沟通</a>
-                                                <a href="#" class="btn btn-sm btn-default"><i class="pli-files icon-lg icon-fw"></i> 私有分享</a>
-                                                <a href="#" class="btn btn-sm btn-default"><i class="pli-home icon-lg icon-fw"></i> 个人空间</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!---------------------------------->
-                    
-                    
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                    
-                    
-                                <!-- Contact Widget -->
-                                <!---------------------------------->
-                                <div class="panel pos-rel">
-                                    <div class="widget-control text-right">
-                                        <div class="btn-group dropdown">
-                                            <a href="#" class="dropdown-toggle btn btn-trans" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical icon-lg"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-right" style="">
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-psi-pen-5"></i> Edit</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-recycling"></i> Remove</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-mail"></i> Send a Message</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-calendar-4"></i> View Details</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-lock-user"></i> Lock</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="pad-all">
-                                        <div class="media pad-ver">
-                                            <div class="media-left">
-                                                <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="../../img/profile-photos/1.png"></a>
-                                            </div>
-                                            <div class="media-body pad-top">
-                                                <a href="#" class="box-inline">
-                                                    <span class="text-lg text-semibold text-main">Aaron Chavez</span>
-                                                    <p class="text-sm">CEO</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <p class="pad-btm bord-bt text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa.</p>
-                                        <div class="text-center pad-to">
-                                            <div class="btn-group">
-                                                <a href="#" class="btn btn-sm btn-default"><i class="demo-pli-mail icon-lg icon-fw"></i> 沟通</a>
-                                                <a href="#" class="btn btn-sm btn-default"><i class="pli-files icon-lg icon-fw"></i> 私有分享</a>
-                                                <a href="#" class="btn btn-sm btn-default"><i class="pli-home icon-lg icon-fw"></i> 个人空间</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!---------------------------------->
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                    
-                    
-                                <!-- Contact Widget -->
-                                <!---------------------------------->
-                                <div class="panel pos-rel">
-                                    <div class="widget-control text-right">
-                                        <div class="btn-group dropdown">
-                                            <a href="#" class="dropdown-toggle btn btn-trans" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical icon-lg"></i></a>
-                                            <ul class="dropdown-menu dropdown-menu-right" style="">
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-psi-pen-5"></i> Edit</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-recycling"></i> Remove</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-mail"></i> Send a Message</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-calendar-4"></i> View Details</a></li>
-                                                <li><a href="#"><i class="icon-lg icon-fw demo-pli-lock-user"></i> Lock</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="pad-all">
-                                        <div class="media pad-ver">
-                                            <div class="media-left">
-                                                <a href="#" class="box-inline"><img alt="Profile Picture" class="img-md img-circle" src="../../img/profile-photos/1.png"></a>
-                                            </div>
-                                            <div class="media-body pad-top">
-                                                <a href="#" class="box-inline">
-                                                    <span class="text-lg text-semibold text-main">Aaron Chavez</span>
-                                                    <p class="text-sm">CEO</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <p class="pad-btm bord-bt text-sm">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean massa.</p>
-                                        <div class="text-center pad-to">
-                                            <div class="btn-group">
-                                                <a href="#" class="btn btn-sm btn-default"><i class="demo-pli-mail icon-lg icon-fw"></i> 沟通</a>
-                                                <a href="#" class="btn btn-sm btn-default"><i class="pli-files icon-lg icon-fw"></i> 私有分享</a>
-                                                <a href="#" class="btn btn-sm btn-default"><i class="pli-home icon-lg icon-fw"></i> 个人空间</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!---------------------------------->
-                            </div>
+
+
 
                         </div>
 					

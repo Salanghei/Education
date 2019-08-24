@@ -362,7 +362,7 @@
                                         <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">分类</p>
                                         <div class="list-group bg-trans pad-ver bord-btm">
                                             <button href="#" class="list-group-item"><i class="pli-folder-add icon-lg icon-fw"></i> 新建文件夹</button>
-                                            <a href="#" class="list-group-item" style="background-color: #f0f0f0;"><i class="demo-pli-folder-with-document icon-lg icon-fw"></i> 全部</a>
+                                            <a href="" ng-click="getPassResourcesByUser();" class="list-group-item" style="background-color: #f0f0f0;"><i class="demo-pli-folder-with-document icon-lg icon-fw"></i> 全部</a>
                                             <a href="#" class="list-group-item"><i class="demo-pli-folder icon-lg icon-fw"></i> 分类文件夹1</a>
                                             <a href="#" class="list-group-item"><i class="demo-pli-folder icon-lg icon-fw"></i> 分类文件夹2</a>
                                         </div>
@@ -370,22 +370,22 @@
                     
                                         <p class="pad-hor mar-top text-main text-bold text-sm text-uppercase">状态</p>
                                         <div class="list-group bg-trans pad-btm bord-btm">
-                                            <a href="#" class="list-group-item">
-                                            <i class="pli-yes icon-lg icon-fw"></i> 已通过
-                                        </a>
-                                            <a href="#" class="list-group-item">
-                                            <i class="pli-hour icon-lg icon-fw"></i> 待审核
-                                        </a>
-                                            <a href="#" class="list-group-item">
-                                            <i class="pli-close icon-lg icon-fw"></i> 未通过
-                                        </a>
+                                            <!--<a href="#" class="list-group-item">-->
+                                                <!--<i class="pli-yes icon-lg icon-fw"></i> 已通过-->
+                                            <!--</a>-->
+                                            <a href="" class="list-group-item" ng-click="getToPassResourcesByUser();">
+                                                <i class="pli-hour icon-lg icon-fw"></i> 待审核
+                                            </a>
+                                            <a href="" class="list-group-item" ng-click="getNotPassResourcesByUser();">
+                                                <i class="pli-close icon-lg icon-fw"></i> 未通过
+                                            </a>
                                             
                                         </div>
 
                                         <div class="list-group bg-trans pad-btm bord-btm">
-                                            <a href="#" class="list-group-item">
-                                            <i class="pli-download icon-lg icon-fw"></i> 可下载资源
-                                        </a>
+                                            <a href="" class="list-group-item" ng-click="getResourcesByAuth();">
+                                                <i class="pli-download icon-lg icon-fw"></i> 可下载资源
+                                            </a>
                                             
                                         </div>
                     
@@ -417,7 +417,7 @@
                     
                     
                                             <!--File list item-->
-                                            <li>
+                                            <li ng-repeat="resource in resourceList">
                                                 <div class="dropdown pull-right">
                                                     <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
@@ -428,156 +428,20 @@
                                                 <div class="file-attach-icon"></div>
                                                 <a href="#" class="file-details">
                                                     <div class="media-block">
-                                                        <div class="media-left" style="margin: 0 20px;"><i class="demo-psi-folder-zip text-success"></i></div>
+                                                        <div class="media-left" style="margin: 0 20px;"><i class="{{ resource.type }}"></i></div>
                                                         <div class="media-body">
-                                                            <p class="file-name text-lg">Package.zip</p>
-                                                            <p style="margin-top: 10px;">这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介</p>
-                                                            <small style="display: inline-block;">2018-12-3 13:07:45 | 125 MB</small>
+                                                            <p class="file-name text-lg">{{ resource.name }}</p>
+                                                            <p style="margin-top: 10px;">{{ resource.details }}</p>
+                                                            <small style="display: inline-block;">{{ resource.time }}</small>
                                                             <span style="margin-left: 50px;">
                                                                 <small><i class="pli-tag"></i></small>
-                                                                <small>标签一、标签二、标签三</small>
+                                                                <small>{{ resource.tag }}</small>
                                                             </span>
                                                         </div>
                                                     </div>
                                                 </a>
                                             </li>
-                    
-                    
-                                            <!--File list item-->
-                                            <li>
-                                                <div class="dropdown pull-right">
-                                                    <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#">删除</a></li>
-                                                        <li><a href="#">移动文件至分类</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="file-attach-icon"></div>
-                                                <a href="#" class="file-details">
-                                                    <div class="media-block">
-                                                        <div class="media-left" style="margin: 0 20px;"><i class="demo-psi-file-html text-info"></i></div>
-                                                        <div class="media-body">
-                                                            <p class="file-name">index.html</p>
-                                                            <p style="margin-top: 10px;">这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介</p>
-                                                            <small>Created 3 weeks ago | 265 KB</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                    
-                                            <!--File list item-->
-                                            <li>
-                                                <div class="dropdown pull-right">
-                                                    <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#">删除</a></li>
-                                                        <li><a href="#">移动文件至分类</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="file-attach-icon"></div>
-                                                <a href="#" class="file-details">
-                                                    <div class="media-block">
-                                                        <div class="media-left" style="margin: 0 20px;"><i class="demo-pli-file-txt"></i></div>
-                                                        <div class="media-body">
-                                                            <p class="file-name">robots.txt</p>
-                                                            <p style="margin-top: 10px;">这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介</p>
-                                                            <small>Created 3 weeks ago | 17 KB</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                    
-                    
-                                            <!--File list item-->
-                                            <li>
-                                                <div class="dropdown pull-right">
-                                                    <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#">删除</a></li>
-                                                        <li><a href="#">移动文件至分类</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="file-attach-icon"></div>
-                                                <a href="#" class="file-details">
-                                                    <div class="media-block">
-                                                        <div class="media-left" style="margin: 0 20px;"><i class="demo-pli-video"></i></div>
-                                                        <div class="media-body">
-                                                            <p class="file-name">Highland.mp4</p>
-                                                            <p style="margin-top: 10px;">这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介</p>
-                                                            <small>Created 3 weeks ago | 540 MB</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                    
-                    
-                                            <!--File list item-->
-                                            <li>
-                                                <div class="dropdown pull-right">
-                                                    <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#">删除</a></li>
-                                                        <li><a href="#">移动文件至分类</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="file-attach-icon"></div>
-                                                <a href="#" class="file-details">
-                                                    <div class="media-block">
-                                                        <div class="media-left" style="margin: 0 20px;"><i class="demo-pli-file"></i></div>
-                                                        <div class="media-body">
-                                                            <p class="file-name">License</p>
-                                                            <p style="margin-top: 10px;">这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介</p>
-                                                            <small>Created 3 weeks ago | 2 KB</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                    
-                    
-                                            <!--File list item-->
-                                            <li>
-                                                <div class="dropdown pull-right">
-                                                    <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#">删除</a></li>
-                                                        <li><a href="#">移动文件至分类</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="file-attach-icon"></div>
-                                                <a href="#" class="file-details">
-                                                    <div class="media-block">
-                                                        <div class="media-left" style="margin: 0 20px;"><i class="demo-pli-file-word"></i></div>
-                                                        <div class="media-body">
-                                                            <p class="file-name">Company Overview.doc</p>
-                                                            <p style="margin-top: 10px;">这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介</p>
-                                                            <small>Created 3 weeks ago | 2 KB</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                    
-                    
-                                            <!--File list item-->
-                                            <li>
-                                                <div class="dropdown pull-right">
-                                                    <a href="#" data-toggle="dropdown" aria-expanded="false"><i class="demo-psi-dot-vertical"></i></a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#">删除</a></li>
-                                                        <li><a href="#">移动文件至分类</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="file-attach-icon"></div>
-                                                <a href="#" class="file-details">
-                                                    <div class="media-block">
-                                                        <div class="media-left" style="margin: 0 20px;"><i class="demo-pli-file-jpg"></i></div>
-                                                        <div class="media-body">
-                                                            <p class="file-name">Nature.jpg</p>
-                                                            <p style="margin-top: 10px;">这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介这里是资源简介</p>
-                                                            <small>Created 3 weeks ago | 56 KB</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>

@@ -7,6 +7,7 @@ import cn.edu.hit.ices.yang.model.User;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -30,6 +31,26 @@ public class UserServiceImpl implements UserService {
     public StudentInfo getUserInfoById(int userid){
         try{
             return studentInfoMapper.selectUserInfoById(userid);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Integer> getRandomStudentID(int n){
+        try{
+            return studentInfoMapper.selectRandomStudentID(n);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<String> getModuleNameByUserid(int id_student){
+        try{
+            return studentInfoMapper.selectModuleNameByUserid(id_student);
         }catch (Exception e){
             e.printStackTrace();
             return null;

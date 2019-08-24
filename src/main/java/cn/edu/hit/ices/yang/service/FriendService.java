@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface FriendService {
     List<Friend> getFriendByUid(int userid);
+
+    List<Integer> getFIdByUid(int userid);
 }

@@ -4,4 +4,8 @@
     <select id="selectFriendByUid" parameterType="java.lang.Integer" resultType="cn.edu.hit.ices.yang.model.Friend">
         select * from friend where uid=#{userid};
     </select>
+
+    <select id="selectFIdByUid" parameterType="int" resultType="java.lang.Integer">
+        select fid from friend where uid=#{userid};
+    </select>
 </mapper>

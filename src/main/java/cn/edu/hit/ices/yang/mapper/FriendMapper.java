@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface FriendMapper {
     List<Friend> selectFriendByUid(int userid);
+
+    List<Integer> selectFIdByUid(int userid);
 }
