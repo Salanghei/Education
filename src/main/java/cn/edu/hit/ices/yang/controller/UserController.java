@@ -1,8 +1,8 @@
 package cn.edu.hit.ices.yang.controller;
 
-import cn.edu.hit.ices.yang.model.StudentInfo;
-import cn.edu.hit.ices.yang.model.User;
+import cn.edu.hit.ices.yang.model.*;
 import cn.edu.hit.ices.yang.service.FriendService;
+import cn.edu.hit.ices.yang.service.ResourceService;
 import cn.edu.hit.ices.yang.service.UserService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -26,6 +26,9 @@ public class UserController {
     @Resource
     private FriendService friendService;
 
+    @Resource
+    private ResourceService resourceService;
+
     @RequestMapping(path = "/login", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String login(@RequestParam String email,
@@ -42,7 +45,7 @@ public class UserController {
                 }
                 message = "success";
                 request.getSession().setAttribute("user", user);  // 设置Session
-                StudentInfo studentInfo = userService.getUserInfoById(user.getUserid());  // 获取用户信息
+                StudentInfo studentInfo = userService.getUserInfoById(user.getUserid()).get(0);  // 获取用户信息
                 if(studentInfo != null){
                     userInfoMes = "success";
                 }else{
@@ -170,6 +173,95 @@ public class UserController {
         result.put("recommendFriends", recommendFriends);
         result.put("userid", user.getUserid());
         String jsonString = JSON.toJSONString(result);
+        return jsonString;
+    }
+
+    @RequestMapping(path = "/userCountInfo", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String userCountInfo(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        List<Double> trustList = userService.getTrustByUid(user.getUserid());
+        String message;
+        if(trustList != null){
+            message = "success";
+        }else{
+            message = "fail";
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("message", message);
+        map.put("trustList", trustList);
+        String jsonString = JSON.toJSONString(map);
+        return jsonString;
+    }
+
+    @RequestMapping(path = "/studentScore", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String studentScore(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        List<StudentInfo> courseList = userService.getUserInfoById(user.getUserid());
+        List<Assessment> scoreList = new ArrayList<>();
+        Course learnLength = new Course();
+        String message;
+        if(courseList != null){
+            scoreList = userService.getStudentScoreByStuid(user.getUserid(), courseList.get(0).getCode_module(), courseList.get(0).getCode_presentation());
+            learnLength = userService.getLearnLength(user.getUserid(), courseList.get(0).getCode_module(), courseList.get(0).getCode_presentation());
+            if(scoreList != null && learnLength != null){
+                message = "success";
+            }else{
+                message = "fail";
+            }
+        }else{
+            message = "fail";
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("message", message);
+        map.put("courseList", courseList);
+        map.put("scoreList", scoreList);
+        map.put("learnLength", learnLength.getModule_presentation_length() - learnLength.getDate_registration());
+        String jsonString = JSON.toJSONString(map);
+        return jsonString;
+    }
+
+    @RequestMapping(path = "/studentOtherInfo", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String studentOtherInfo(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        int resourceCount = resourceService.getResourceCountByUid(user.getUserid());
+        int resourceClick = userService.getVleClickByUid(user.getUserid());
+        int friendCount = friendService.getFriendCountByUid(user.getUserid());
+        String message;
+        if(resourceCount != -1 && resourceClick != -1 && friendCount != -1){
+            message = "success";
+        }else{
+            message = "fail";
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("message", message);
+        map.put("resourceCount", resourceCount);
+        map.put("resourceClick", resourceClick);
+        map.put("friendCount", friendCount);
+        map.put("userid", user.getUserid());
+        String jsonString = JSON.toJSONString(map);
+        return jsonString;
+    }
+
+    @RequestMapping(path = "/applyMessage", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public String applyMessage(HttpServletRequest request){
+        User user = (User)request.getSession().getAttribute("user");
+        List<FriendApply> friendApplyList = friendService.getToPassFriendApplyByUid(user.getUserid());
+        List<ResourceApply> resourceApplyList = resourceService.getToPassResourceApplyByUid(user.getUserid());
+        String message;
+        if(friendApplyList != null && resourceApplyList != null){
+            message = "success";
+        }else{
+            message = "fail";
+        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("message", message);
+        map.put("friendApplyList", friendApplyList);
+        map.put("resourceApplyList", resourceApplyList);
+        String jsonString = JSON.toJSONString(map);
         return jsonString;
     }
 }

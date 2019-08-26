@@ -8,4 +8,16 @@
     <select id="selectFIdByUid" parameterType="int" resultType="java.lang.Integer">
         select fid from friend where uid=#{userid};
     </select>
+
+    <select id="selectTrustByUid" parameterType="int" resultType="java.lang.Double">
+        select trust from friend where uid=#{userid} order by trust;
+    </select>
+
+    <select id="selectFriendCountByUid" parameterType="int" resultType="int">
+        select count(*) from friend where uid=#{userid};
+    </select>
+
+    <select id="selectToPassFriendApplyByUid" parameterType="int" resultType="cn.edu.hit.ices.yang.model.FriendApply">
+        select * from friendapply where uid=#{userid} and state='toPass';
+    </select>
 </mapper>

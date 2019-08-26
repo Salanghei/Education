@@ -4,4 +4,8 @@
     <select id="selectVleClickByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.ChartData">
         select id_site as field, sum(sum_click) as data from studentvle where code_module=#{code_module} group by id_site;
     </select>
+
+    <select id="selectVleClickByUid" parameterType="int" resultType="int">
+        select sum(sum_click) from studentvle where id_studemnt=#{id_student};
+    </select>
 </mapper>

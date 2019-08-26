@@ -8,6 +8,11 @@ public class Assessment {
     private int date;                     // 测验日期
     private int weight;                   // 测验所占权重
 
+    private int id_student;               // 学生id
+    private int date_submitted;
+    private int is_banked;
+    private float score;                  // 学生成绩
+
     public String getCode_module() {
         return code_module;
     }
@@ -54,5 +59,37 @@ public class Assessment {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public int getId_student() {
+        return id_student;
+    }
+
+    public void setId_student(int id_student) {
+        this.id_student = id_student;
+    }
+
+    public int getDate_submitted() {
+        return date_submitted;
+    }
+
+    public void setDate_submitted(int date_submitted) {
+        this.date_submitted = date_submitted;
+    }
+
+    public int getIs_banked() {
+        return is_banked;
+    }
+
+    public void setIs_banked(int is_banked) {
+        this.is_banked = is_banked;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
     }
 }

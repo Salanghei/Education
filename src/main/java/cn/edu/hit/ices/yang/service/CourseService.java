@@ -2,6 +2,7 @@ package cn.edu.hit.ices.yang.service;
 
 import cn.edu.hit.ices.yang.model.Assessment;
 import cn.edu.hit.ices.yang.model.ChartData;
+import cn.edu.hit.ices.yang.model.Course;
 import cn.edu.hit.ices.yang.model.StudentInfo;
 
 import java.util.List;

@@ -1,6 +1,7 @@
 package cn.edu.hit.ices.yang.mapper;
 
 import cn.edu.hit.ices.yang.model.Resource;
+import cn.edu.hit.ices.yang.model.ResourceApply;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,4 +19,8 @@ public interface ResourceMapper {
     List<Resource> selectResourceById(int resourceid);  // 获取特定id的资源
 
     List<Resource> selectResourceByAuth(String auth);
+
+    int selectResourceCountByUid(int userid);  // 某用户上传资源的数量
+
+    List<ResourceApply> selectToPassResourceApplyByUid(int userid);
 }

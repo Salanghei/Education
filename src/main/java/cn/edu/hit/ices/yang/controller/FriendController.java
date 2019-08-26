@@ -37,7 +37,7 @@ public class FriendController {
         if(friendList != null){
             message = "success";
             for(Friend friend : friendList){
-                StudentInfo studentInfo = userService.getUserInfoById(friend.getFid());
+                StudentInfo studentInfo = userService.getUserInfoById(friend.getFid()).get(0);
                 studentInfoList.add(studentInfo);
             }
         }else{

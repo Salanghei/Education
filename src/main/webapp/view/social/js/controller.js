@@ -1,14 +1,36 @@
-app.controller("blogCtrl", function($scope){
-    $scope.goto = function(where){
-        window.location.href = where;
-    }
-}).controller("friendCtrl", function($scope, learnSpaceService){
+app.controller("blogCtrl", function($scope, socialService){
     $scope.goto = function(where){
         window.location.href = where;
     }
 
     var params = {};
-    learnSpaceService.friendByUid(params, function(studentInfoList, friendList){
+    socialService.getApplyMessage(params, function(friendApplyList, resourceApplyList){
+        var friendApplies = [];
+        for(var i = 0; i < friendApplyList.length; i++){
+            var img = Math.ceil(Math.random()*10);  // 取0~10的随机数，取0概率极小
+            img = (img == 0)? 1 : img;
+            var friendApply = {
+                "img": img,
+                "fid": friendApplyList[i]["fid"],
+                "time": friendApplyList[i]["time"]
+            };
+            friendApplies.push(friendApply);
+        }
+        if(friendApplies.length == 0 && resourceApplyList.length == 0){
+            $scope.applyFlag = true;
+        }else{
+            $scope.applyFlag = false;
+        }
+        $scope.friendApplies = friendApplies;
+        $scope.resourceApplyList = resourceApplyList;
+    });
+}).controller("friendCtrl", function($scope, socialService){
+    $scope.goto = function(where){
+        window.location.href = where;
+    }
+
+    var params = {};
+    socialService.friendByUid(params, function(studentInfoList, friendList){
         var friendInfoList = [];
         for(var i = 0; i < friendList.length; i++){
             var img = Math.ceil(Math.random()*10);  // 取0~10的随机数，取0概率极小
@@ -28,12 +50,77 @@ app.controller("blogCtrl", function($scope){
         console.log(friendInfoList);
         $scope.friendInfoList = friendInfoList;
     });
-}).controller("groupCtrl", function($scope){
+
+    socialService.getApplyMessage(params, function(friendApplyList, resourceApplyList){
+        var friendApplies = [];
+        for(var i = 0; i < friendApplyList.length; i++){
+            var img = Math.ceil(Math.random()*10);  // 取0~10的随机数，取0概率极小
+            img = (img == 0)? 1 : img;
+            var friendApply = {
+                "img": img,
+                "fid": friendApplyList[i]["fid"],
+                "time": friendApplyList[i]["time"]
+            };
+            friendApplies.push(friendApply);
+        }
+        if(friendApplies.length == 0 && resourceApplyList.length == 0){
+            $scope.applyFlag = true;
+        }else{
+            $scope.applyFlag = false;
+        }
+        $scope.friendApplies = friendApplies;
+        $scope.resourceApplyList = resourceApplyList;
+    });
+}).controller("groupCtrl", function($scope, socialService){
     $scope.goto = function(where){
         window.location.href = where;
     }
-}).controller("resourceSharePrivateCtrl", function($scope){
+
+    var params = {};
+    socialService.getApplyMessage(params, function(friendApplyList, resourceApplyList){
+        var friendApplies = [];
+        for(var i = 0; i < friendApplyList.length; i++){
+            var img = Math.ceil(Math.random()*10);  // 取0~10的随机数，取0概率极小
+            img = (img == 0)? 1 : img;
+            var friendApply = {
+                "img": img,
+                "fid": friendApplyList[i]["fid"],
+                "time": friendApplyList[i]["time"]
+            };
+            friendApplies.push(friendApply);
+        }
+        if(friendApplies.length == 0 && resourceApplyList.length == 0){
+            $scope.applyFlag = true;
+        }else{
+            $scope.applyFlag = false;
+        }
+        $scope.friendApplies = friendApplies;
+        $scope.resourceApplyList = resourceApplyList;
+    });
+}).controller("resourceSharePrivateCtrl", function($scope, socialService){
     $scope.goto = function(where){
         window.location.href = where;
     }
+
+    var params = {};
+    socialService.getApplyMessage(params, function(friendApplyList, resourceApplyList){
+        var friendApplies = [];
+        for(var i = 0; i < friendApplyList.length; i++){
+            var img = Math.ceil(Math.random()*10);  // 取0~10的随机数，取0概率极小
+            img = (img == 0)? 1 : img;
+            var friendApply = {
+                "img": img,
+                "fid": friendApplyList[i]["fid"],
+                "time": friendApplyList[i]["time"]
+            };
+            friendApplies.push(friendApply);
+        }
+        if(friendApplies.length == 0 && resourceApplyList.length == 0){
+            $scope.applyFlag = true;
+        }else{
+            $scope.applyFlag = false;
+        }
+        $scope.friendApplies = friendApplies;
+        $scope.resourceApplyList = resourceApplyList;
+    });
 });

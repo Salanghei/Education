@@ -8,4 +8,10 @@
     <select id="selectPreByModule" parameterType="java.lang.String" resultType="java.lang.String">
         select code_presentation from courses where code_module=#{code_module};
     </select>
+    
+    <select id="selectLearnLength" resultType="cn.edu.hit.ices.yang.model.Course">
+        select * from studentregistration as a, courses as b
+        where a.code_module = b.code_module and a.code_presentation = b.code_presentation
+        and a.id_student=#{id_student} and a.code_module=#{code_module} and a.code_presentation=#{code_presentation};
+    </select>
 </mapper>

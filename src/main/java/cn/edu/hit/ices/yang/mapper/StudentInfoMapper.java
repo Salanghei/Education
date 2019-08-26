@@ -11,7 +11,7 @@ import java.util.List;
 public interface StudentInfoMapper {
     int selectCourseUserCount(String code_module);
 
-    StudentInfo selectUserInfoById(int id_student);
+    List<StudentInfo> selectUserInfoById(int id_student);
 
     List<StudentInfo> selectStudentListByModule(@Param("code_module")String code_module,
                                                 @Param("start")int start,

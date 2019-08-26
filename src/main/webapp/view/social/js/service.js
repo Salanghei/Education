@@ -1,4 +1,4 @@
-app.service("learnSpaceService", function($http){
+app.service("socialService", function($http){
     this.friendByUid = function(params, callback){
         $http({
             method: "Get",
@@ -27,6 +27,35 @@ app.service("learnSpaceService", function($http){
                 callback(getNodes, getEdges, userid, recommendFriends);// 这样就把data传到controller.js中去了
             }
         }, function error(response){
+            // 请求失败执行代码
+        });
+    }
+
+    this.getUserCountInfo = function(params, callback){
+        $http({
+            method: "Get",
+            url: "/user/userCountInfo"
+        }).then(function success(response){
+            var trustList = response.data.trustList;// 这个data是将要传到controller.js中去的
+            if (callback) {
+                callback(trustList);// 这样就把data传到controller.js中去了
+            }
+        }, function error(response){
+            // 请求失败执行代码
+        });
+    }
+
+    this.getApplyMessage = function(params, callback){
+        $http({
+            method: 'GET',
+            url: '/user/applyMessage'
+        }).then(function success(response) {
+            var friendApplyList = response.data.friendApplyList;// 这个data是将要传到controller.js中去的
+            var resourceApplyList = response.data.resourceApplyList;
+            if (callback) {
+                callback(friendApplyList, resourceApplyList);// 这样就把data传到controller.js中去了
+            }
+        }, function error(response) {
             // 请求失败执行代码
         });
     }

@@ -24,4 +24,12 @@
     <select id="selectResourceByAuth" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.Resource">
         select * from resource where auth=#{auth};
     </select>
+
+    <select id="selectResourceCountByUid" parameterType="int" resultType="int">
+        select count(distinct resourceid) from resource where userid=#{userid};
+    </select>
+
+    <select id="selectToPassResourceApplyByUid" parameterType="int" resultType="cn.edu.hit.ices.yang.model.ResourceApply">
+        select * from resourceapply where uid=#{userid} and state='toPass';
+    </select>
 </mapper>

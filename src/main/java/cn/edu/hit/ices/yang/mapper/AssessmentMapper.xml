@@ -4,4 +4,11 @@
     <select id="selectAssessmentByModule" parameterType="java.lang.String" resultType="cn.edu.hit.ices.yang.model.Assessment">
         select * from assessments where code_module=#{code_module};
     </select>
+
+    <select id="selectStudentScoreByStuid" resultType="cn.edu.hit.ices.yang.model.Assessment">
+        select * from studentassessment as a, assessments as b
+        where a.id_assessment = b.id_assessment
+        and a.id_student=#{id_student} and b.code_module=#{code_module} and b.code_presentation=#{code_presentation}
+        order by a.score;
+    </select>
 </mapper>

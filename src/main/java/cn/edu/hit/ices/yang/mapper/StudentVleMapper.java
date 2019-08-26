@@ -8,4 +8,6 @@ import java.util.List;
 @Repository("studentVleMapper")
 public interface StudentVleMapper {
     List<ChartData> selectVleClickByModule(String code_module);
+
+    int selectVleClickByUid(int id_student);
 }
